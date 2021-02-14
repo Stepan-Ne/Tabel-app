@@ -1,7 +1,28 @@
 # Getting Started with Create React App
 
 1. create-react-app .
-2. 
+2. BASIC TABLE
+2.1 Define the columns for the table
+2.2 Create a table instance using react-table
+2.3 Define a basic table structure using plain HTML
+2.4 Use the table instance and HTML
+2.5 Include the desired CSS
+3. define the columns: columns.js has columns = [{Header: 'Id'}]
+4. Assosiate the each column with the data - specify the accessor prop for each column:
+{Header: 'Id', accessor: id}
+5. Create a table instance: useTable({columns: ..., data:...}). USETABLE recommends that you memorise the rows in columns using useMemo()
+6. Define a basic table structure using html
+7. Use table instance with jsx to render all necessary ui:
+7.1 Destructuring a coupel of prop and methods from the table instance {getTableProps, getTableBodyProps, headerGroups, rows, prepareRow}
+7.2 <table {...getTableProps()}>
+7.3  <tbody {...getTableBodyProps()}>
+7.4 see BasicTable.jsx
+8. Include some css
+
+
+
+
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
