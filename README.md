@@ -20,7 +20,17 @@
 8. Include some css
 
 9. Add Redux
-10. Sorting: 
+10. Sorting: useSortBy. Add this hook to useTable hook.
+10.1 <th {...column.getHeaderProps(column.getSortByToggleProps())}> 
+it adds propperties related to the sorting feature on each column
+10.2 Add the icon to "th" that represent the sorted state of the column:
+ <span>{column.isSorted ? (column.isSortedDesc ? ' 🔽' : ' 🔼') : ''}</span>
+ 11. Global Filtering
+ 11.1 Create a filter input component which takes two props: filter (value of input) 
+ & setFilter 
+ 11.2 useGlobalFilter hook pass into the useTable hook & from the tableInstance we need to destructure two more things: state, setGlobalFilter
+ 11.3 From state destructure 'globalFilter'
+
 
 
 
