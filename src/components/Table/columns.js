@@ -75,7 +75,7 @@ export const GROUPED_COLUMNS = [
   ],
   },
   {
-    Header: 'Address',
+    Header: 'Description',
    accessor: 'description'
   },
 ];

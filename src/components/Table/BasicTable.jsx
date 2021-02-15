@@ -1,13 +1,12 @@
 import React, { useMemo } from 'react';
 import { useTable } from 'react-table';
-import moc_data from './moc_data.json';
-import { COLUMNS, GROUPED_COLUMNS } from './columns';
+import { GROUPED_COLUMNS } from './columns';
 import './table.css';
 
-export const BasicTable = () => {
-
+ const BasicTable = ({ tableData }) => {
+   
   const columns = useMemo(() => GROUPED_COLUMNS, []);
-  const data = useMemo(() => moc_data, []);
+  const data = useMemo(() => tableData, [tableData]);
 
   const tableInstance = useTable({
     columns,
@@ -23,7 +22,7 @@ export const BasicTable = () => {
   } = tableInstance;
 
   return (
-    <div>
+    <div className="table-wrapper">
       <table {...getTableProps()}>
         <thead>
           {headerGroups.map((headerGroup) => (
@@ -52,3 +51,5 @@ export const BasicTable = () => {
     </div>
   );
 };
+
+export default BasicTable;

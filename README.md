@@ -19,6 +19,9 @@
 7.4 see BasicTable.jsx
 8. Include some css
 
+9. Add Redux
+10. Sorting: 
+
 
 
 

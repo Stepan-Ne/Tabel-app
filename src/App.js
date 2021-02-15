@@ -1,13 +1,13 @@
 import './App.css';
 import Navbar from './components/Navbar';
-import { BasicTable } from './components/BasicTable';
+import TableContainer from './components/Table/TableContainer';
 
 function App() {
   return (
     <>
       <Navbar />
       <h3>Table 1</h3>
-      <BasicTable />
+      <TableContainer />
     </>
   );
 }
