@@ -31,6 +31,8 @@ it adds propperties related to the sorting feature on each column
  11.2 useGlobalFilter hook pass into the useTable hook & from the tableInstance we need to destructure two more things: state, setGlobalFilter
  11.3 From state destructure 'globalFilter'
 
+ 12. useFormik
+
 
 
 

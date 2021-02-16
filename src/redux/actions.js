@@ -1,4 +1,5 @@
 export const GET_DATA = 'GET_DATA';
+export const ADD_ROW = 'ADD_ROW';
 export const SHOW_SEARCH_FIELD = 'SHOW_SEARCH_FIELD';
 
 
@@ -14,4 +15,9 @@ export const showLoaderAC = () => ({
 export const showSearchFieldAC = (isShow) => ({
   type: SHOW_SEARCH_FIELD,
   payload: isShow
+})
+
+export const addRowAC = (row) => ({
+  type: ADD_ROW,
+  payload: row
 })
