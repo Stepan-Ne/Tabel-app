@@ -32,6 +32,7 @@ it adds propperties related to the sorting feature on each column
  11.3 From state destructure 'globalFilter'
 
  12. useFormik
+ 13. usePagination
 
 
 

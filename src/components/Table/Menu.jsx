@@ -6,6 +6,7 @@ import AddRowForm from '../Form/AddRowForm';
  const Menu = ({ filter, setFilter }) => {
 
   const isSearchField = useSelector((state) => state.app.isSearchField);
+  const isForm = useSelector((state) => state.app.isForm);
 
   return (
     <div>
@@ -13,7 +14,11 @@ import AddRowForm from '../Form/AddRowForm';
       ? <TableFilter filter={filter} setFilter={setFilter}/>
       : null
       }
-      <AddRowForm />
+      {isForm
+      ? <AddRowForm />
+      : null
+      }
+      
       
     </div>
   )

@@ -1,5 +1,5 @@
 import { GET_DATA, ADD_ROW } from './actions';
-import { getTableDataAC } from './actions';
+import { getTableDataAC, showLoaderAC, hideLoaderAC } from './actions';
 
 const initState = {
   table: [],
@@ -43,14 +43,16 @@ const tableReducer = (state = initState, action) => {
 // Thunk
 export const fetchData = () => {
   return async (dispatch) => {
-    //debugger
+    
     try {
+      dispatch(showLoaderAC());
       const data = await fetch(
         'http://www.filltext.com/?rows=32&id={number|1000}&firstName={firstName}&lastName={lastName}&email={email}&phone={phone|(xxx)xxx-xx-xx}&address={addressObject}&description={lorem|32}'
       );
 
       const response = await data.json();
       dispatch(getTableDataAC(response));
+      dispatch(hideLoaderAC());
     } catch (error) {
       throw error;
     }

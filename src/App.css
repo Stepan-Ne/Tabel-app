@@ -62,3 +62,9 @@ body {
 .table-wrapper {
   margin: 1rem;
 }
+
+.loaderPosition {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

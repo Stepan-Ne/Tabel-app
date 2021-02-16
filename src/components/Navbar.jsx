@@ -1,39 +1,56 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { showSearchFieldAC } from '../redux/actions';
-
+import { showSearchFieldAC, showFormAC } from '../redux/actions';
 
 function Navbar() {
-
-  const [search, setSearch] = useState(false);
+  const [state, setState] = useState({
+    search: false,
+    addRow: false,
+  });
   const dispatch = useDispatch();
 
-    useEffect(() => {
-      dispatch(showSearchFieldAC(search))
-    }, [search]);
+  useEffect(() => {
+    dispatch(showSearchFieldAC(state.search));
+  }, [state.search]);
+  useEffect(() => {
+    dispatch(showFormAC(state.addRow));
+  }, [state.addRow]);
 
-  
-const onSearchHandler = () => {
-   setSearch(!search)
-  
-}
+  const onClickHandler = (e) => {
+    setState({
+      [e.target.name]: !state[e.target.name],
+    });
+  };
 
   return (
     <nav className='navbar'>
-    <div className='nav-center'>
-      <h3>React Table</h3>
-      
-      <div>
-        {/* <input type="text" className="size-input"/> */}
-        <button type='button' className='nav-btn' onClick={onSearchHandler}>Search</button>
+      <div className='nav-center'>
+        <h3>React Table</h3>
+
+        <div>
+          {/* <input type="text" className="size-input"/> */}
+          <button
+            type='button'
+            name='search'
+            className='nav-btn'
+            onClick={onClickHandler}
+          >
+            Search
+          </button>
+        </div>
+        <div>
+          <button
+            type='button'
+            name='addRow'
+            className='nav-btn'
+            onClick={onClickHandler}
+          >
+            Add Row
+          </button>
+        </div>
       </div>
-      <div>
-      <button type='button' className='nav-btn' >Add Row</button>
-      </div>
-    
-    </div>
-  </nav>
-  )
+    </nav>
+  );
 }
 
 export default Navbar;

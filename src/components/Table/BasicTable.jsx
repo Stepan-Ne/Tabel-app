@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { useTable, useSortBy, useGlobalFilter } from 'react-table';
+import { useTable, useSortBy, useGlobalFilter, usePagination } from 'react-table';
 import { GROUPED_COLUMNS } from './columns';
 import './table.css';
 import Menu from './Menu';
@@ -13,8 +13,10 @@ import Menu from './Menu';
     columns,
     data,
   },
+  
   useGlobalFilter,
-  useSortBy);
+  useSortBy,
+  usePagination,);
 
   const {
     getTableProps,

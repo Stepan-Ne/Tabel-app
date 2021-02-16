@@ -56,46 +56,46 @@ return errors;
         <tr>
           <td>
             <div>
-              <label htmlFor='firstName'>First Name</label>
+              <label htmlFor='firstName'>First Name: </label>
               <input type='text' name='firstName'  onChange={formik.handleChange} value={formik.values.firstName}/>
             </div>
             <div>
-              <label htmlFor='secondName'>Last Name</label>
+              <label htmlFor='secondName'>Last Name: </label>
               <input type='text' name='lastName'  onChange={formik.handleChange} value={formik.values.lastName}/>
             </div>
           </td>
           <td>
             <div>
-              <label htmlFor='email'>Email</label>
+              <label htmlFor='email'>Email: </label>
               <input type='email' name='email'  onChange={formik.handleChange} value={formik.values.email}/>
             </div>
             <div>
-              <label htmlFor='phone'>Phone</label>
+              <label htmlFor='phone'>Phone: </label>
               <input type='tel'  pattern="^[0-9-+\s()]*$" placeholder="(123)123-1234"
               name='phone' onChange={formik.handleChange} value={formik.values.phone}/>
             </div>
           </td>
           <td>
           <div>
-              <label htmlFor='street'>Street</label>
+              <label htmlFor='street'>Street: </label>
               <input type='text' name='street' onChange={formik.handleChange} value={formik.values.street}/>
             </div>
             <div>
-              <label htmlFor='city'>City</label>
+              <label htmlFor='city'>City: </label>
               <input type='text' name='city' onChange={formik.handleChange} value={formik.values.city}/>
             </div>
             <div>
-              <label htmlFor='state'>State</label>
+              <label htmlFor='state'>State: </label>
               <input type='text' name='state' onChange={formik.handleChange} value={formik.values.state}/>
             </div>
             <div>
-              <label htmlFor='zip'>Zip</label>
+              <label htmlFor='zip'>Zip: </label>
               <input type='text' pattern="[0-9]{3}[0-9]{3}"
               name='zip' onChange={formik.handleChange} value={formik.values.zip}/>
             </div>
           </td>
           <td>
-          <label htmlFor='description'>Description</label>
+          <label htmlFor='description'>Description: </label>
               <textarea name='description' onChange={formik.handleChange} value={formik.values.description}/>
           </td>
         </tr>

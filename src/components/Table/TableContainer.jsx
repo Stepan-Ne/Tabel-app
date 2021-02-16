@@ -1,25 +1,30 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import BasicTable from './BasicTable';
+import Loader from '../utils/Loader';
 import { fetchData } from '../../redux/tableReducer';
 import { connect } from 'react-redux';
 
-
- const TableContainer = ({ tableData, fetchData }) => {
+const TableContainer = ({ tableData, fetchData, loader }) => {
   useEffect(() => {
-  
     fetchData();
-  }, [])
+  }, []);
 
   return (
     <>
-      <BasicTable tableData={tableData}/>
+      {loader ? (
+        <div className='loaderPosition'>
+          <Loader />
+        </div>
+      ) : (
+        <BasicTable tableData={tableData} />
+      )}
     </>
-  )
+  );
 };
 
 const mapState = (state) => ({
-  
-  tableData: state.tableData.table
-})
+  loader: state.app.loader,
+  tableData: state.tableData.table,
+});
 
-export default connect(mapState, {fetchData})(TableContainer);
+export default connect(mapState, { fetchData })(TableContainer);
