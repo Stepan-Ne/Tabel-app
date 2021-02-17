@@ -42,7 +42,11 @@ it adds propperties related to the sorting feature on each column
  13.3 Pagination (Page size): 
  Add two things to the tableInstamce: setPageSize
  and pageSize from state
-
+14. Selecting Rows:
+14. Create a component that will help with selecting rows - checkbox:
+useRowSelect: https://codesandbox.io/s/github/tannerlinsley/react-table/tree/master/examples/row-selection?file=/src/App.js
+selectedFlatRows
+Add the column with checkbox
 
 
 

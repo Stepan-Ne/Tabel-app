@@ -4,10 +4,12 @@ import {
   useSortBy,
   useGlobalFilter,
   usePagination,
+  useRowSelect,
 } from 'react-table';
 import { GROUPED_COLUMNS } from './columns';
 import './table.css';
 import Menu from './Menu';
+import Checkbox from './Checkbox';
 
 const BasicTable = ({ tableData }) => {
   const columns = useMemo(() => GROUPED_COLUMNS, []);
@@ -21,7 +23,26 @@ const BasicTable = ({ tableData }) => {
 
     useGlobalFilter,
     useSortBy,
-    usePagination
+    usePagination,
+    useRowSelect,
+    (hooks) => {
+      hooks.visibleColumns.push((columns) => {
+        return [
+          {
+            id: 'selection',
+            Header: ({ getToggleAllRowsSelectedProps }) => (
+              <Checkbox {...getToggleAllRowsSelectedProps()} />
+            ),
+            Cell: ({ row }) => {
+              console.log('ROW', row);
+
+              return <Checkbox {...row.getToggleRowSelectedProps()} />;
+            },
+          },
+          ...columns,
+        ];
+      });
+    }
   );
 
   const {
@@ -40,9 +61,10 @@ const BasicTable = ({ tableData }) => {
     pageOptions,
     state,
     setGlobalFilter,
+    selectedFlatRows,
   } = tableInstance;
   const { globalFilter, pageSize, pageIndex } = state;
-  
+  console.log('Select Row', selectedFlatRows);
   return (
     <>
       <Menu filter={globalFilter} setFilter={setGlobalFilter} />
@@ -83,6 +105,7 @@ const BasicTable = ({ tableData }) => {
           </tbody>
         </table>
 
+        {/* PAGINATION */}
         <div className='centerPosition'>
           <span>
             Page:{' '}
@@ -111,28 +134,49 @@ const BasicTable = ({ tableData }) => {
         </div>
 
         <div className='centerPosition'>
-            Go to Page:
-            <input
-              type='number'
-              defaultValue={pageIndex + 1}
-              onChange={(e) => {
-                const pageNumber = e.target.value
-                  ? Number(e.target.value) - 1
-                  : 0;
-                gotoPage(pageNumber);
-              }}
-              style={{width: '50px'}}
-            />
-            <select value={pageSize} onChange={e => setPageSize(Number(e.target.value))}>
-              {
-                [5, 10, 25, 50].map(pageSize => (
-                  <option key={pageSize} value={pageSize}>
-                    Show {pageSize}
-                  </option>
-                ))
-              }
-            </select>
-          </div>
+          Go to Page:
+          <input
+            type='number'
+            defaultValue={pageIndex + 1}
+            onChange={(e) => {
+              const pageNumber = e.target.value
+                ? Number(e.target.value) - 1
+                : 0;
+              gotoPage(pageNumber);
+            }}
+            style={{ width: '50px' }}
+          />
+          <select
+            value={pageSize}
+            onChange={(e) => setPageSize(Number(e.target.value))}
+          >
+            {[5, 10, 25, 50].map((pageSize) => (
+              <option key={pageSize} value={pageSize}>
+                Show {pageSize}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+
+      {/* Selected ROW */}
+      <div className='selectedRowList'>
+        {selectedFlatRows.map((row) => (
+          <div className='selectedRow'>
+            <ul>
+              <li>Выбран пользователь: {row.original.firstName}{' '}
+              {row.original.lastName}
+              </li>
+              <li> Описание:
+              <textarea value={row.original.description}></textarea>
+              </li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+            </div>
+            
+        ))}
       </div>
     </>
   );
