@@ -12,7 +12,7 @@ const TableContainer = ({ tableData, fetchData, loader }) => {
   return (
     <>
       {loader ? (
-        <div className='loaderPosition'>
+        <div className='centerPosition'>
           <Loader />
         </div>
       ) : (

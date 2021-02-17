@@ -32,7 +32,16 @@ it adds propperties related to the sorting feature on each column
  11.3 From state destructure 'globalFilter'
 
  12. useFormik
- 13. usePagination
+ 13. usePagination:
+ 13.1 Pagination (Next and Previous):
+ Use page instead of rows in the jsx & nableInstance - we have 10 rows on pege
+ Add two things to the tableInstamce: nextPage, previousPage & two btns for these
+ Add two things to the tableInstamce: canNextPage, canPreviousPage - boolean value for the disabled prop of btns
+ 13.2 How many pages in totla count? 
+ Add two things to the tableInstamce: goToPage, pageCount
+ 13.3 Pagination (Page size): 
+ Add two things to the tableInstamce: setPageSize
+ and pageSize from state
 
 
 
