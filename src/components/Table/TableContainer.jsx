@@ -1,14 +1,9 @@
 import React, { useEffect } from 'react';
 import BasicTable from './BasicTable';
 import Loader from '../utils/Loader';
-import { fetchData } from '../../redux/tableReducer';
 import { connect } from 'react-redux';
 
-const TableContainer = ({ tableData, fetchData, loader }) => {
-  useEffect(() => {
-    fetchData();
-  }, []);
-
+const TableContainer = ({ tableData, loader }) => {
   return (
     <>
       {loader ? (
@@ -27,4 +22,4 @@ const mapState = (state) => ({
   tableData: state.tableData.table,
 });
 
-export default connect(mapState, { fetchData })(TableContainer);
+export default connect(mapState, null)(TableContainer);

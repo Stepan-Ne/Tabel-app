@@ -16,7 +16,6 @@ const tableReducer = (state = initState, action) => {
       return {
         ...state,
         table: [
-         
           {
             id: Date.now().toString(),
             firstName: action.payload.firstName,
@@ -31,7 +30,7 @@ const tableReducer = (state = initState, action) => {
             },
             description: action.payload.description,
           },
-          ...state.table
+          ...state.table,
         ],
       };
 
@@ -41,14 +40,20 @@ const tableReducer = (state = initState, action) => {
 };
 
 // Thunk
-export const fetchData = () => {
+export const fetchData = (isBigData = false) => {
+  let url = null;
+  if (isBigData) {
+    url =
+      'http://www.filltext.com/?rows=1000&id={number|1000}&firstName={firstName}&delay=3&lastName={lastName}&email={email}&phone={phone|(xxx)xxx-xx-xx}&address={addressObject}&description={lorem|32}';
+  } else {
+    url =
+      'http://www.filltext.com/?rows=32&id={number|1000}&firstName={firstName}&lastName={lastName}&email={email}&phone={phone|(xxx)xxx-xx-xx}&address={addressObject}&description={lorem|32}';
+  }
+
   return async (dispatch) => {
-    
     try {
       dispatch(showLoaderAC());
-      const data = await fetch(
-        'http://www.filltext.com/?rows=32&id={number|1000}&firstName={firstName}&lastName={lastName}&email={email}&phone={phone|(xxx)xxx-xx-xx}&address={addressObject}&description={lorem|32}'
-      );
+      const data = await fetch(url);
 
       const response = await data.json();
       dispatch(getTableDataAC(response));

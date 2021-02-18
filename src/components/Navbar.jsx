@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { showSearchFieldAC, showFormAC } from '../redux/actions';
+import { fetchData } from '../redux/tableReducer';
+import { connect } from 'react-redux';
 
-function Navbar() {
+function Navbar({ fetchData }) {
   const [state, setState] = useState({
     search: false,
     addRow: false,
+    isBigData: false,
   });
   const dispatch = useDispatch();
 
@@ -15,6 +18,9 @@ function Navbar() {
   useEffect(() => {
     dispatch(showFormAC(state.addRow));
   }, [state.addRow]);
+  useEffect(() => {
+    fetchData(state.isBigData);
+  }, [state.isBigData]);
 
   const onClickHandler = (e) => {
     setState({
@@ -28,7 +34,7 @@ function Navbar() {
         <h3>React Table</h3>
 
         <div>
-          {/* <input type="text" className="size-input"/> */}
+         
           <button
             type='button'
             name='search'
@@ -48,9 +54,31 @@ function Navbar() {
             Add Row
           </button>
         </div>
+        <div>
+          <button
+            type='button'
+            name='isBigData'
+            className='nav-btn'
+            onClick={onClickHandler}
+            disabled={state.isBigData}
+          >
+            Large
+          </button>
+        </div>
+        <div>
+          <button
+            type='button'
+            name='isBigData'
+            className='nav-btn'
+            onClick={onClickHandler}
+            disabled={!state.isBigData}
+          >
+            Small
+          </button>
+        </div>
       </div>
     </nav>
   );
 }
 
-export default Navbar;
+export default connect(null, { fetchData })(Navbar);
