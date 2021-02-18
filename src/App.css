@@ -70,13 +70,13 @@ body {
   justify-content: center;
 }
 .selectedRow {
-  
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  margin: 1rem;
   border: 1px solid black;
   transition: 0.3s;
   padding: 2px 16px;
 }
 .selectedRowList {
   display: flex;
+  flex-wrap: wrap;
   margin: 1rem;
 }
