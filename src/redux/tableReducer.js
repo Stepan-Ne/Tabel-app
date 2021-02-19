@@ -40,7 +40,7 @@ const tableReducer = (state = initState, action) => {
 };
 
 // Thunk
-export const fetchData = (isBigData = false) => {
+export const fetchData = (isBigData) => {
   let url = null;
   if (isBigData) {
     url =
