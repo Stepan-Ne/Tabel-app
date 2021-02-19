@@ -10,6 +10,7 @@ import { GROUPED_COLUMNS } from './columns';
 import './table.css';
 import Menu from './Menu';
 import Checkbox from './Checkbox';
+import CartList from './CartList';
 
 const BasicTable = ({ tableData }) => {
   const columns = useMemo(() => GROUPED_COLUMNS, []);
@@ -64,7 +65,7 @@ const BasicTable = ({ tableData }) => {
     selectedFlatRows,
   } = tableInstance;
   const { globalFilter, pageSize, pageIndex } = state;
-  console.log('Select Row', selectedFlatRows);
+ 
   return (
     <>
       <Menu filter={globalFilter} setFilter={setGlobalFilter} />
@@ -160,25 +161,8 @@ const BasicTable = ({ tableData }) => {
       </div>
 
       {/* Selected ROW */}
-      <div className='selectedRowList'>
-        {selectedFlatRows.map((row) => (
-          <div className='selectedRow'>
-            <ul>
-              <li>Выбран пользователь: <b>{row.original.firstName}{' '}
-              {row.original.lastName}</b>
-              </li>
-              <li> Описание:
-              <textarea value={row.original.description}></textarea>
-              </li>
-              <li>Адрес проживания: <b>{row.original.address.streetAddress}</b></li>
-              <li>Город: <b>{row.original.address.city}</b></li>
-              <li>Провинция/штат: <b>{row.original.address.state}</b></li>
-              <li> Индекс: <b>{row.original.address.zip}</b> </li>
-            </ul>
-            </div>
-            
-        ))}
-      </div>
+      <CartList selectedFlatRows={selectedFlatRows}/>
+      
     </>
   );
 };
